@@ -1,0 +1,42 @@
+POST http://localhost:8080/user/add
+Content-Type: application/json
+
+{
+
+   "login": "Andrei",
+   "firstName": "Andrei",
+   "lastName": "Andrei",
+   "birthDate": "Andrei",
+   "login": "Andrei",
+   "login": "Andrei",
+   "login": "Andrei",
+;
+   ;
+ ;
+   password;
+   email;
+  telephone;
+  role;
+  "name": "Andrei",
+  "login": "Andrei1",
+  "password": "123",
+  "address": "Minsk",
+  "phone": [
+    {"telephone": "123456"},
+    {"telephone": "123456"}
+  ]
+}
+
+###
+POST http://localhost:8080/advert
+Content-Type: application/json
+token: c4892867-3460-4d66-9939-391a54546f21
+
+###
+
+GET http://localhost:8080/user/auth?login=Andrei1&password=123
+
+###
+POST http://localhost:8080/user/address
+
+###
