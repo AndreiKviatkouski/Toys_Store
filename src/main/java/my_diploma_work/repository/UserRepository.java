@@ -1,42 +1,41 @@
 package my_diploma_work.repository;
 
+
 import my_diploma_work.domain.user.Role;
 import my_diploma_work.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long > {
 
     User getByLogin(String login);
 
     User getById(long id);
 
-    User getAllByAddress(String address);
+    List<User> getAllByRole(Role role);
 
-    User getAllByRoll(Role role);
-
-    List<User> getAllByBirthDat(String birthDate);
+    List<User> getAllByBirthDate(String birthDate);
 
     List<User> getAll();
 
-    User updateUser(User user, int id);
+    User updateUser(User user, long id);
 
-    String updateUserByLogin(String login, int id);
+    User updateUserByLogin(String login, long id);
 
-    String updateUserByPassword(String password, int id);
+    String updateUserByPassword(String password, long id);
 
-    String updateUserByName(String name, int id);
+    String updateUserByName(String name, long id);
 
-    String updateUserByEmail(String email, int id);
+    String updateUserByEmail(String email, long id);
 
-    String updateUserByTelephone(String telephone, int id);
+    String updateUserByTelephone(String telephone, long id);
 
-    String updateUserByBirthDate(String birthDate, int id);
+    String updateUserByBirthDate(String birthDate, long id);
 
     User checkUser(String login,String password);
 
-    void remove(int id);
+    void remove(long id);
 
     void remove(User user);
 

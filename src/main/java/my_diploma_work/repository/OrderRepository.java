@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface OrderRepository extends JpaRepository<Sort.Order,Long> {
+public interface OrderRepository extends JpaRepository<OrderToy,Long> {
     OrderUser getByIdUser(long id);
 
     OrderToy getByIdToy(long id);

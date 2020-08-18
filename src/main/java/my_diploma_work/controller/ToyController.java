@@ -2,14 +2,10 @@ package my_diploma_work.controller;
 
 import lombok.Data;
 
-import my_diploma_work.domain.toys.StatusToy;
 import my_diploma_work.domain.toys.Toy;
-import my_diploma_work.domain.user.User;
 import my_diploma_work.repository.ToyRepository;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +21,6 @@ public class ToyController {
 
     @PostMapping(path = "/add")
     public ResponseEntity<Toy> add(@RequestBody Toy toy) {
-        toyRepository.save(toy);
         return new ResponseEntity<>(toyRepository.save(toy), HttpStatus.CREATED);
     }
 
@@ -35,12 +30,13 @@ public class ToyController {
     }
 
     @GetMapping(path = "/getByManufacturer")
-    public ResponseEntity<Toy> getToyByManufacturer(@RequestBody String manufacturer) {
+    public ResponseEntity<List<Toy>> getToyByManufacturer(@RequestBody String manufacturer) {
         List<Toy> byManufacturer = toyRepository.getAllByManufacturer(manufacturer);
-        if (byManufacturer.contains(manufacturer)) {
-//            return new ResponseEntity<>(manufacturer, HttpStatus.OK);
+        for (int i = 0; i < byManufacturer.size(); i++) {
+            if (byManufacturer.get(i).getManufacturer().contains(manufacturer)) {
+                return new ResponseEntity<>(byManufacturer, HttpStatus.OK);
+            }
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
-
 }

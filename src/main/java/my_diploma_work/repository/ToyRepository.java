@@ -33,6 +33,4 @@ public interface ToyRepository extends JpaRepository<Toy, Long> {
     void remove(int id);
 
     void remove(Toy toy);
-
-
 }

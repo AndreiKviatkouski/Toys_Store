@@ -5,10 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import my_diploma_work.domain.user.Moderator;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,5 +19,6 @@ public class Store {
     private String address;
     private String telephone;
     private String DateWorks;
+    @OneToOne
     private Moderator moderator;
 }
