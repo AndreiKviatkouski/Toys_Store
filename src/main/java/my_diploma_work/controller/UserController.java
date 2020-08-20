@@ -26,28 +26,28 @@ public class UserController {
         return new ResponseEntity<>(userRepository.save(user), HttpStatus.CREATED);
     }
 
-    @GetMapping(path = "/getByLogin")
+    @GetMapping(path = "/findByLogin")
     public ResponseEntity<User> getUserByLogin(@RequestBody String login) {
-        return new ResponseEntity<>(userRepository.getByLogin(login), HttpStatus.OK);
+        return new ResponseEntity<>(userRepository.findByLogin(login), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/getById")
+    @GetMapping(path = "/findById")
     public ResponseEntity<User> getUserById(@RequestBody long id) {
-        return new ResponseEntity<>(userRepository.getById(id), HttpStatus.OK);
+        return new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
     }
 
     @GetMapping(path = "/auth")
     public ResponseEntity<User> getUserByPassword(@RequestParam String login, @RequestParam String password) {
-        User byLogin = userRepository.getByLogin(login);
+        User byLogin = userRepository.findByLogin(login);
         if (byLogin.getPassword().equals(password)) {
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         }
         return new ResponseEntity<>(HttpStatus.LOCKED);
     }
 
-    @GetMapping(path = "/getAllByRoll")
+    @GetMapping(path = "/findAllByRoll")
     public ResponseEntity<List<User>> getAllByRoll(@RequestParam Role role) {
-        List<User> userList = userRepository.getAllByRole(role);
+        List<User> userList = userRepository.findAllByRole(role);
         for (int i = 0; i < userList.size(); i++) {
             if (userList.get(i).getRole().equals(role)) {
                 return new ResponseEntity<>(List.copyOf(userList), HttpStatus.OK);
@@ -56,9 +56,9 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(path = "/getAllByBirthDate")
+    @GetMapping(path = "/findAllByBirthDate")
     public ResponseEntity<List<User>> getALLByBirthDate(@RequestParam String birthDate) {
-        List<User> userList = userRepository.getAllByBirthDate(birthDate);
+        List<User> userList = userRepository.findAllByBirthDate(birthDate);
         for (int i = 0; i < userList.size(); i++) {
             if (userList.get(i).getBirthDate().equals(birthDate)) {
                 return new ResponseEntity<>(List.copyOf(userList), HttpStatus.OK);
@@ -67,23 +67,29 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(path = "/getAll")
+    @GetMapping(path = "/findAll")
     public ResponseEntity<List<User>> getALL() {
-        return new ResponseEntity<>(userRepository.getAll(), HttpStatus.OK);
+        return new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
 
     }
 
-    @PostMapping(path = "/updateUserByLogin")
-    public ResponseEntity<User> updateUser(@RequestParam String login, @RequestParam long id) {
-        userRepository.DAO
-        for (int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).getId() == id) {
-                User newUser = userList.get(i).setLogin(login);
-                return new ResponseEntity<>(newUser, HttpStatus.OK)
-            }
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    @DeleteMapping(path = "/delete")
+    public ResponseEntity<User> add(@RequestBody Long id) {
+        userRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
+//
+//    @PostMapping(path = "/updateUserByLogin")
+//    public ResponseEntity<User> updateUser(@RequestParam String login, @RequestParam long id) {
+//        userRepository.DAO
+//        for (int i = 0; i < userList.size(); i++) {
+//            if (userList.get(i).getId() == id) {
+//                User newUser = userList.get(i).setLogin(login);
+//                return new ResponseEntity<>(newUser, HttpStatus.OK)
+//            }
+//        }
+//        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//    }
 
 }
 

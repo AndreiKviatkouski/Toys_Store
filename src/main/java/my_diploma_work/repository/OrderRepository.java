@@ -8,24 +8,24 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface OrderRepository extends JpaRepository<OrderToy,Long> {
-    OrderUser getByIdUser(long id);
+//    OrderUser getByIdUser(long id);
+//
+//    OrderToy getByIdToy(long id);
+//
+//    List<OrderUser> getAllOrderByUser();
+//
+//    List<OrderToy> getAllOrderByToy();
 
-    OrderToy getByIdToy(long id);
+//    OrderUser updateByIdUser(Long id);
+//
+//    OrderToy updateByIdToy(Long id);
 
-    List<OrderUser> getAllOrderByUser();
+//    void remove(OrderToy orderToy);
+//
+//    void remove(OrderUser orderUser);
 
-    List<OrderToy> getAllOrderByToy();
-
-    OrderUser updateByIdUser(long id);
-
-    OrderToy updateByIdToy(long id);
-
-    void remove(OrderToy orderToy);
-
-    void remove(OrderUser orderUser);
-
-    void removeOrderByUser(long id);
-
-    void  removeOrderByToy(long id);
+//    void removeOrderByUser(long id);
+//
+//    void  removeOrderByToy(long id);
 
 }

@@ -1,4 +1,4 @@
-package my_diploma_work.service.DTO;
+package my_diploma_work.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -8,11 +8,11 @@ import my_diploma_work.domain.user.Role;
 import my_diploma_work.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ModeratorRepository extends JpaRepository<User, Role> {
+public interface ModeratorRepository extends JpaRepository<User, Long> {
 
-    OrderToy checkUser(OrderToy orderToy, long id);
+//    OrderToy checkUser(OrderToy orderToy, long id);
+//
+//    OrderUser checkUser(OrderUser orderUser, long id);
 
-    OrderUser checkUser(OrderUser orderUser, long id);
-
-    String removeReview(Review review, int id);
+//    String removeReview(Review review, int id);
 }

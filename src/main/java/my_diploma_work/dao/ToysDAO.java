@@ -1,9 +1,9 @@
 package my_diploma_work.dao;
 
+import my_diploma_work.DTO.ToysReviewDTO;
 import my_diploma_work.dao.rowMapper.ToysRowMapper;
 import my_diploma_work.domain.toys.Review;
 import my_diploma_work.domain.toys.Toy;
-import my_diploma_work.service.DTO.ToysReviewDTO;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;

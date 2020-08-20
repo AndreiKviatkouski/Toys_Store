@@ -7,36 +7,36 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface UserRepository extends JpaRepository<User, Long > {
+public interface UserRepository extends JpaRepository<User, Long> {
 
-    User getByLogin(String login);
 
-    User getById(long id);
+    User findByLogin(String login);
 
-    List<User> getAllByRole(Role role);
+    User findById(long id);
 
-    List<User> getAllByBirthDate(String birthDate);
+    List<User> findAllByRole(Role role);
 
-    List<User> getAll();
+    List<User> findAllByBirthDate(String birthDate);
 
-    User updateUser(User user, long id);
+    List<User> findAll();
 
-    User updateUserByLogin(String login, long id);
 
-    String updateUserByPassword(String password, long id);
+//    User use(String login, long id);
+//
+//    String updateUserByPassword(String password, long id);
+//
+//    String updateUserByName(String name, long id);
+//
+//    String updateUserByEmail(String email, long id);
+//
+//    String updateUserByTelephone(String telephone, long id);
+//
+//    String updateUserByBirthDate(String birthDate, long id);
+//
+//    User checkUser(String login,String password);
+//
+    void deleteById(long id);
 
-    String updateUserByName(String name, long id);
 
-    String updateUserByEmail(String email, long id);
-
-    String updateUserByTelephone(String telephone, long id);
-
-    String updateUserByBirthDate(String birthDate, long id);
-
-    User checkUser(String login,String password);
-
-    void remove(long id);
-
-    void remove(User user);
 
 }

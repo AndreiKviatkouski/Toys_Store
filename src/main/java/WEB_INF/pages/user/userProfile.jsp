@@ -5,7 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-<a href="/wishList">Your with list</a>
 <a href="/logout">Logout</a>
 <a href="/editUser">Edit profile</a>
 <a href="/createOrder">Create order</a>
