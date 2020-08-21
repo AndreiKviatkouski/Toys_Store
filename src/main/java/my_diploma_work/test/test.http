@@ -14,11 +14,6 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8080/advert
-Content-Type: application/json
-token: c4892867-3460-4d66-9939-391a54546f21
-
-###
 
 GET http://localhost:8080/user/auth?login=andrei&password=andrei
 

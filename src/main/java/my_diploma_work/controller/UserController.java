@@ -1,95 +1,69 @@
 package my_diploma_work.controller;
 
 import lombok.Data;
-import my_diploma_work.domain.user.Role;
 import my_diploma_work.domain.user.User;
 import my_diploma_work.repository.UserRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.HttpSession;
 
-import java.util.List;
+import static my_diploma_work.domain.user.Role.USER;
 
 
 @Data
-@RestController
-@RequestMapping(path = "/user")
+@Controller
+@RequestMapping("/user")
 public class UserController {
 
     private final UserRepository userRepository;
 
-
-    @PostMapping(path = "/add")
-    public ResponseEntity<User> add(@RequestBody User user) {
-        userRepository.save(user);
-        return new ResponseEntity<>(userRepository.save(user), HttpStatus.CREATED);
-    }
-
-    @GetMapping(path = "/findByLogin")
-    public ResponseEntity<User> getUserByLogin(@RequestBody String login) {
-        return new ResponseEntity<>(userRepository.findByLogin(login), HttpStatus.OK);
-    }
-
-    @GetMapping(path = "/findById")
-    public ResponseEntity<User> getUserById(@RequestBody long id) {
-        return new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
-    }
-
-    @GetMapping(path = "/auth")
-    public ResponseEntity<User> getUserByPassword(@RequestParam String login, @RequestParam String password) {
-        User byLogin = userRepository.findByLogin(login);
-        if (byLogin.getPassword().equals(password)) {
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        }
-        return new ResponseEntity<>(HttpStatus.LOCKED);
-    }
-
-    @GetMapping(path = "/findAllByRoll")
-    public ResponseEntity<List<User>> getAllByRoll(@RequestParam Role role) {
-        List<User> userList = userRepository.findAllByRole(role);
-        for (int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).getRole().equals(role)) {
-                return new ResponseEntity<>(List.copyOf(userList), HttpStatus.OK);
-            }
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
-    @GetMapping(path = "/findAllByBirthDate")
-    public ResponseEntity<List<User>> getALLByBirthDate(@RequestParam String birthDate) {
-        List<User> userList = userRepository.findAllByBirthDate(birthDate);
-        for (int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).getBirthDate().equals(birthDate)) {
-                return new ResponseEntity<>(List.copyOf(userList), HttpStatus.OK);
-            }
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
-    @GetMapping(path = "/findAll")
-    public ResponseEntity<List<User>> getALL() {
-        return new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
-
-    }
-
-    @DeleteMapping(path = "/delete")
-    public ResponseEntity<User> add(@RequestBody Long id) {
-        userRepository.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-//
-//    @PostMapping(path = "/updateUserByLogin")
-//    public ResponseEntity<User> updateUser(@RequestParam String login, @RequestParam long id) {
-//        userRepository.DAO
-//        for (int i = 0; i < userList.size(); i++) {
-//            if (userList.get(i).getId() == id) {
-//                User newUser = userList.get(i).setLogin(login);
-//                return new ResponseEntity<>(newUser, HttpStatus.OK)
-//            }
-//        }
-//        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    //    {
+//        User admin=new User(1,"admin","Admin","Adminski","1/1/20","admin","admin@mail.ru","+375-29-111-11-11",ADMINISTRATOR);
+//        User user=new User(2,"user","User","Userski","1/1/20","user","user@mail.ru","+375-29-111-11-12",USER);
+//       userRepository.save(admin);
+//       userRepository.save(user);
 //    }
+    @GetMapping("/reg")
+    public String reg() {
+        return "reg";
+    }
 
+    @PostMapping
+    public ModelAndView register(User user, ModelAndView modelAndView) {
+        modelAndView.setViewName("reg");
+        userRepository.save(user);
+        user.setRole(USER);
+        modelAndView.addObject("user", user);
+        return modelAndView;
+    }
+
+    @GetMapping("/auth")
+    public String auth() {
+        return "auth";
+    }
+
+    @PostMapping("/auth")
+    public String auth(User user, ModelAndView modelAndView, HttpSession httpSession) {
+        User userByEmail = userRepository.findByEmail(user.getEmail());
+        if (userByEmail.getPassword().equals(user.getPassword())) {
+            modelAndView.addObject("user", user);
+            httpSession.setAttribute("user", userByEmail);
+            httpSession.setAttribute("checkAuth", true);
+            return ("redirect:/");
+        } else {
+            modelAndView.addObject("Invalid authorization!");
+        }
+        return "auth";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession httpSession) {
+        httpSession.getServletContext();
+        return "index";
+    }
 }
-
