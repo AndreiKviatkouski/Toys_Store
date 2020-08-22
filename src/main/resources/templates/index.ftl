@@ -12,31 +12,14 @@
 <body>
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <ul class="nav">
-        <#if !checkReg??>
+        <#if !checkAuth??>
             <li class="nav-item">
                 <a class="nav-link" href="/user/reg">Registration</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/user/auth">Authorisation</a>
             </li>
-        <#elseif checkRegA??>
-            <li class="nav-item">
-                <a class="nav-link" href="/user/account">Personal Information</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Create resume</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">You resume</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Response</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/user/logout">Logout</a>
-            </li>
-        <#elseif checkRegE??>
-            <a href="/user/employer/account">Personal Account</a>
+        <#elseif checkAuth??>
             <a href="/user/logout">logout</a>
         </#if>
     </ul>
@@ -45,10 +28,10 @@
     <h2>${message}</h2>
 </#if>
 
+<video width="400" height="300" controls="controls" poster="">
+    <source src="https://ak.picdn.net/shutterstock/videos/6385670/preview/stock-footage-kids-room-with-bear-rocking-horse-and-cubes-looping-stop-motion-animation.webm" type='video/webm; codecs="vp8, vorbis"'>
+</video>
 <style>
-    body {
-        background: url("https://yt3.ggpht.com/a/AATXAJycMVd2SfKRHDs3yF_scDH7uG069mbvxjdoO1Lq=s900-c-k-c0xffffffff-no-rj-mo")
-    }
 </style>
 
 </body>

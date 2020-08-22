@@ -33,14 +33,15 @@ public class UserController {
         return "reg";
     }
 
-    @PostMapping
-    public ModelAndView register(User user, ModelAndView modelAndView) {
+    @PostMapping("/reg")
+    public String reg(User user, ModelAndView modelAndView) {
         modelAndView.setViewName("reg");
         userRepository.save(user);
         user.setRole(USER);
         modelAndView.addObject("user", user);
-        return modelAndView;
-    }
+            return "redirect:/";
+        }
+
 
     @GetMapping("/auth")
     public String auth() {
@@ -56,7 +57,7 @@ public class UserController {
             httpSession.setAttribute("checkAuth", true);
             return ("redirect:/");
         } else {
-            modelAndView.addObject("Invalid authorization!");
+            modelAndView.addObject("massage","Invalid authorization!");
         }
         return "auth";
     }
@@ -64,6 +65,6 @@ public class UserController {
     @GetMapping("/logout")
     public String logout(HttpSession httpSession) {
         httpSession.getServletContext();
-        return "index";
+        return "redirect:/";
     }
 }
