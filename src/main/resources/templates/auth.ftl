@@ -10,10 +10,10 @@
 <div>
     <fieldset>
         <legend>Authorisation</legend>
-        <form name="/user/auth" action="" method="POST">
-            Email : <input type="email" name="lastname"/> <br/>
-            Password : <input type="password" name="lastname"/> <br/>
-            <input type="submit" value="Submit"/>
+        <form action="/user/auth" method="POST">
+            Email : <input type="email" name="email"/> <br/>
+            Password : <input type="password" name="password"/> <br/>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </fieldset>
 

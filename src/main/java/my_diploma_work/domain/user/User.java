@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -23,7 +20,9 @@ public class User {
     private String password;
     private String email;
     private String telephone;
-    private Role role;
+
+    @Enumerated(value = EnumType.STRING)
+    private Role role = Role.USER;
 
     public User(Role role) {
         this.role = role;

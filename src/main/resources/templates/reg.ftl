@@ -1,5 +1,4 @@
 <#import "/spring.ftl" as spring/>
-
 <html>
 <head>
     <title>Registration</title>
@@ -16,15 +15,22 @@
 <div>
     <fieldset>
         <legend>Registration</legend>
-        <form name="/user/reg" action="" method="POST">
-            <#--            <label><input type="text" name="firstName" placeholder="firsName"></label>-->
-            <#--            First Name: <@spring.formInput "user.firstName" "" "text"/>    <br/>-->
-
-            Firstname: <input type="text" name="firstname"/> <br/>
-            Lastname : <input type="text" name="lastname"/> <br/>
-            Password : <input type="password" name="lastname"/> <br/>
-            Email : <input type="email" name="lastname"/> <br/>
-            Telephone: <input type="tel" name="lastname"/> <br/>
+        <form action="/user/reg" method="POST">
+            Firstname: <label>
+                <input type="text" name="firstName" maxlength="12" minlength="4" required/>
+            </label> <br/>
+            Lastname : <label>
+                <input type="text" name="lastName"/>
+            </label> <br/>
+            Password : <label>
+                <input type="password" name="password"/>
+            </label> <br/>
+            Email : <label>
+                <input type="email" name="email"/>
+            </label> <br/>
+            Telephone: <label>
+                <input type="tel" name="telephone"/>
+            </label> <br/>
             <input type="submit" value="Create"/>
         </form>
     </fieldset>
