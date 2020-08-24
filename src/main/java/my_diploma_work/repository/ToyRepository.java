@@ -2,6 +2,7 @@ package my_diploma_work.repository;
 
 import my_diploma_work.domain.toys.*;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -20,15 +21,20 @@ public interface ToyRepository extends JpaRepository<Toy, Long> {
 
     List<Toy> findByPrice(BigDecimal price);
 
-//    Toy updateToy(Toy toy, int id);
-//
-//    BigDecimal updateToyPrice(BigDecimal price, int id);
-//
-//    String updateDescription(String description, int id);
-//
-//    String updateReview(Review review, int id);
+//    @Query(value = "update Toy set Toy = ?1 where id = ?2")
+//    Toy updateToy(long id);
+//    Toy toy existsToyById(Toy toy, long id);
 
-    void deleteById(int id);
+    @Query(value = "update Toy set price = ?1 where id = ?2")
+    BigDecimal updateToyPrice(BigDecimal price, long id);
 
-//    void remove(Toy toy);
+    @Query(value = "update Toy set description = ?1 where id = ?2")
+    String updateDescription(String description, long id);
+
+    @Query(value = "update Toy set review = ?1 where id = ?2")
+    String updateReview(Review review, long id);
+
+    void deleteById(long id);
+    void delete(Toy toy);
+
 }

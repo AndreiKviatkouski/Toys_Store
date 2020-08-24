@@ -5,7 +5,6 @@ import my_diploma_work.domain.user.Role;
 import my_diploma_work.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -18,27 +17,24 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findAllByRole(Role role);
 
-    List<User> findAll();
 
     @Query(value = "update User set email = ?1 where id = ?2")
-    String updateUserByLogin(String login, long id);
+    String updateUserByEmail(String email, long id);
 
-//    String updateUserByPassword(String password, long id);
-//
-//    String updateUserByName(String name, long id);
-//
-//    String updateUserByEmail(String email, long id);
-//
-//    String updateUserByTelephone(String telephone, long id);
-//
-//    String updateUserByBirthDate(String birthDate, long id);
-//
-//    User checkUser(String login,String password);
+    @Query(value = "update User set telephone = ?1 where id = ?2")
+    String updateUserByTelephone(String telephone, long id);
 
-    boolean existsUserByEmail(String email);
-//
+    @Query(value = "update User set firstName = ?1 where id = ?2")
+    String updateUserByFirstName(String firstName, long id);
+
+    @Query(value = "update User set lastName = ?1 where id = ?2")
+    String updateUserByLastName(String lastName, long id);
+
+
+    boolean existsUserById(long id);
+
+
     void deleteById(long id);
-
 
 
 

@@ -18,13 +18,13 @@
 
     <div class="form-group">
         <label for="exampleInputEmail1">firstName</label>
-        <input type="text" name="firstName" class="form-control" id="exampleInputFirsName1"   pattern = "\[A-Z]{1}\-[a-z]{1,14}" title = "Имя не может быть короче 2 латинских символов  и больше 15"   required><br/>
+        <input type="text" name="firstName" class="form-control" id="exampleInputFirsName1"   pattern = "[A-Z][A-Za-z' -]+" title = "Имя должно начинаться с заглавной латинской буквы и не может быть короче 2 латинских символов,  и больше 15"  maxlength="15" required><br/>
         <small id="emailHelp" class="form-text text-muted">for example: Bob </small>
     </div>
 
     <div class="form-group">
         <label for="exampleInputEmail1">lastName</label>
-        <input type="text" name="lastName" class="form-control" id="exampleInputFirsName1"  pattern = "\[A-Z]{1}\-[a-z]{1,14}" title = "Фамилия не может быть короче двух латинских символови больше 15"  required><br/>
+        <input type="text" name="lastName" class="form-control" id="exampleInputFirsName1"  pattern = "[A-Z][A-Za-z' -]+" title = "Фамилия должна начинаться с заглавной латинской буквыне может быть короче двух латинских символов, и больше 15"  maxlength="15"required><br/>
         <small id="emailHelp" class="form-text text-muted"> for example: Smith </small>
     </div>
 
