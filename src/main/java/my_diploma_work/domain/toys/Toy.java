@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+
 public class Toy {
 
     @Id
@@ -28,16 +28,16 @@ public class Toy {
 
     private String description;
 
-    public Toy(Format format) {
+    public Toy() {
+    }
+
+    public Toy(long id,String name, Format format, StatusToy statusToy, String manufacturer, BigDecimal price, String description) {
+        this.name = name;
         this.format = format;
-    }
-
-    public Toy(StatusToy statusToy) {
         this.statusToy = statusToy;
-    }
-
-    public Toy(Estimation estimation) {
-        this.estimation = estimation;
+        this.manufacturer = manufacturer;
+        this.price = price;
+        this.description = description;
     }
 }
 

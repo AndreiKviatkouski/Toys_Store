@@ -1,7 +1,6 @@
 package my_diploma_work.controller;
 
 import lombok.Data;
-import my_diploma_work.domain.user.Role;
 import my_diploma_work.domain.user.User;
 import my_diploma_work.repository.UserRepository;
 import org.springframework.stereotype.Controller;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
+
 
 import static my_diploma_work.domain.user.Role.*;
 
@@ -22,66 +21,14 @@ public class UserController {
 
     private final UserRepository userRepository;
 
-    @GetMapping("/findByEmail")
-    public ModelAndView findByEmail(String email, ModelAndView modelAndView) {
-        User value = userRepository.findByEmail(email);
-        modelAndView.addObject("findUserByEmail", value);
-        modelAndView.setViewName("redirect:/admin");
-        return modelAndView;
-    }
-
-
-    @GetMapping("/findById")
-    public ModelAndView findById(long id, ModelAndView modelAndView) {
-        List<User> userList = userRepository.findAll();
-        for (int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).getId() == id) {
-                User user = userList.get(i);
-                modelAndView.addObject("findUserById", user);
-                modelAndView.setViewName("redirect:/");
-                return modelAndView;
-            }
-
-        }
-        return modelAndView;
-    }
-
-    @GetMapping("/findByRole")
-    public ModelAndView findByRole(Role role, ModelAndView modelAndView) {
-        List<User> userList = userRepository.findAll();
-        for (int i = 0, userListSize = userList.size(); i < userListSize; i++) {
-            User value = userList.get(i);
-            if (value.getRole().equals(role)) {
-                modelAndView.addObject("findUserByRole", value);
-                modelAndView.setViewName("redirect:/");
-                return modelAndView;
-            }
-
-        }
-        return modelAndView;
-    }
-
-    @DeleteMapping("deleteById")
-    public ModelAndView delById(long id, ModelAndView modelAndView) {
-        if (userRepository.existsUserById(id)) {
-            userRepository.deleteById(id);
-            modelAndView.setViewName("redirect:/");
-            return modelAndView;
-        }
-        modelAndView.addObject("massage", "User not found!");
-        return modelAndView;
-    }
-
-
-
     @PutMapping("/updateByEmail")
     public ModelAndView updateByEmail(String email, long id, ModelAndView modelAndView) {
         if (userRepository.existsUserById(id)) {
             userRepository.updateUserByEmail(email, id);
-            modelAndView.setViewName("redirect:/admin");
+            modelAndView.setViewName("redirect:/user");
             return modelAndView;
         }
-        modelAndView.addObject("massage", "User not found!");
+        modelAndView.addObject("massage", "User not found by email:" + email);
         return modelAndView;
     }
 
@@ -89,10 +36,10 @@ public class UserController {
     public ModelAndView updateByTel(String telephone, long id, ModelAndView modelAndView) {
         if (userRepository.existsUserById(id)) {
             userRepository.updateUserByTelephone(telephone, id);
-            modelAndView.setViewName("redirect:/a");
+            modelAndView.setViewName("redirect:/user");
             return modelAndView;
         }
-        modelAndView.addObject("massage", "User not found!");
+        modelAndView.addObject("massage", "User not found by phone: " + telephone);
         return modelAndView;
     }
 
@@ -100,10 +47,10 @@ public class UserController {
     public ModelAndView updateByFirsName(String firstName, long id, ModelAndView modelAndView) {
         if (userRepository.existsUserById(id)) {
             userRepository.updateUserByFirstName(firstName, id);
-            modelAndView.setViewName("redirect:/");
+            modelAndView.setViewName("redirect:/user");
             return modelAndView;
         }
-        modelAndView.addObject("massage", "User not found!");
+        modelAndView.addObject("massage", "User not found by FirstName: " + firstName);
         return modelAndView;
     }
 
@@ -111,12 +58,13 @@ public class UserController {
     public ModelAndView updateByLastName(String lastName, long id, ModelAndView modelAndView) {
         if (userRepository.existsUserById(id)) {
             userRepository.updateUserByLastName(lastName, id);
-            modelAndView.setViewName("redirect:/");
+            modelAndView.setViewName("redirect:/user");
             return modelAndView;
         }
-        modelAndView.addObject("massage", "User not found!");
+        modelAndView.addObject("massage", "User not found by LastName:" + lastName);
         return modelAndView;
     }
+
 
     @GetMapping("/reg")
     public String reg() {

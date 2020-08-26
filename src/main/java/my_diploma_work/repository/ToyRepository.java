@@ -21,20 +21,32 @@ public interface ToyRepository extends JpaRepository<Toy, Long> {
 
     List<Toy> findByPrice(BigDecimal price);
 
-//    @Query(value = "update Toy set Toy = ?1 where id = ?2")
-//    Toy updateToy(long id);
-//    Toy toy existsToyById(Toy toy, long id);
+    @Query(value = "update Toy set name = ?1 where id = ?2")
+    String updateToyByName(String name, long id);
 
     @Query(value = "update Toy set price = ?1 where id = ?2")
-    BigDecimal updateToyPrice(BigDecimal price, long id);
+    BigDecimal updateToyByPrice(BigDecimal price, long id);
 
     @Query(value = "update Toy set description = ?1 where id = ?2")
-    String updateDescription(String description, long id);
+    String updateToyByDescription(String description, long id);
 
     @Query(value = "update Toy set review = ?1 where id = ?2")
-    String updateReview(Review review, long id);
+    String updateToyByReview(Review review, long id);
 
     void deleteById(long id);
-    void delete(Toy toy);
+
+    boolean existsToyById(long id);
+
+    boolean existsByName(String name);
+
+    boolean existsByManufacturer(String manufacturer);
+
+    boolean existsToyByStatusToy(StatusToy statusToy);
+
+    boolean existsToyByEstimation(Estimation estimation);
+
+    boolean existsToyByPrice(BigDecimal price);
+
+    boolean existsByFormat(Format format);
 
 }

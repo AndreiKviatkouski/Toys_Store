@@ -33,11 +33,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsUserById(long id);
 
-    boolean existsByEmailAndTelephone(String email,String telephone);
+    boolean existsByEmailAndTelephone(String email, String telephone);
 
+    boolean existsByRole(Role role);
+
+    boolean existsByEmail(String email);
 
     void deleteById(long id);
-
 
 
 }
