@@ -24,17 +24,12 @@ public class UserController {
 
     @GetMapping("/findByEmail")
     public ModelAndView findByEmail(String email, ModelAndView modelAndView) {
-        List<User> userList = userRepository.findAll();
-        for (User value : userList) {
-            if (value.getEmail().equals(email)) {
-                modelAndView.addObject("findUserByEmail", value);
-                modelAndView.setViewName("redirect:/");
-                return modelAndView;
-            }
-
-        }
+        User value = userRepository.findByEmail(email);
+        modelAndView.addObject("findUserByEmail", value);
+        modelAndView.setViewName("redirect:/admin");
         return modelAndView;
     }
+
 
     @GetMapping("/findById")
     public ModelAndView findById(long id, ModelAndView modelAndView) {
@@ -78,23 +73,12 @@ public class UserController {
     }
 
 
-    @DeleteMapping("delete")
-    public ModelAndView delete(User user, ModelAndView modelAndView) {
-        List<User> userList = userRepository.findAll();
-        if (userList.contains(user)) {
-            userRepository.delete(user);
-            modelAndView.setViewName("redirect:/");
-            return modelAndView;
-        }
-        modelAndView.addObject("massage", "User not found!");
-        return modelAndView;
-    }
 
     @PutMapping("/updateByEmail")
     public ModelAndView updateByEmail(String email, long id, ModelAndView modelAndView) {
         if (userRepository.existsUserById(id)) {
             userRepository.updateUserByEmail(email, id);
-            modelAndView.setViewName("redirect:/");
+            modelAndView.setViewName("redirect:/admin");
             return modelAndView;
         }
         modelAndView.addObject("massage", "User not found!");
@@ -105,7 +89,7 @@ public class UserController {
     public ModelAndView updateByTel(String telephone, long id, ModelAndView modelAndView) {
         if (userRepository.existsUserById(id)) {
             userRepository.updateUserByTelephone(telephone, id);
-            modelAndView.setViewName("redirect:/");
+            modelAndView.setViewName("redirect:/a");
             return modelAndView;
         }
         modelAndView.addObject("massage", "User not found!");
@@ -141,8 +125,14 @@ public class UserController {
 
     @PostMapping("/reg")
     public ModelAndView reg(User user, ModelAndView modelAndView) {
-        userRepository.save(user);
-        modelAndView.setViewName("redirect:/");
+
+        if (!userRepository.existsByEmailAndTelephone(user.getEmail(), user.getTelephone())) {
+            userRepository.save(user);
+            modelAndView.setViewName("redirect:/");
+        } else {
+            modelAndView.addObject("massage", "User already exist");
+            modelAndView.setViewName("reg");
+        }
         return modelAndView;
     }
 
