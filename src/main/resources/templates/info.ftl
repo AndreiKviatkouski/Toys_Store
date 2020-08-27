@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Moderator</title>
+    <title>Info</title>
 </head>
 <body>
 <style>

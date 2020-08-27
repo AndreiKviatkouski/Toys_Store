@@ -2,14 +2,17 @@ package my_diploma_work.controller;
 
 import lombok.Data;
 import my_diploma_work.domain.user.User;
+import my_diploma_work.repository.ToyRepository;
 import my_diploma_work.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-
 
 import static my_diploma_work.domain.user.Role.*;
 
@@ -20,6 +23,7 @@ import static my_diploma_work.domain.user.Role.*;
 public class UserController {
 
     private final UserRepository userRepository;
+    private final ToyRepository toyRepository;
 
     @PutMapping("/updateByEmail")
     public ModelAndView updateByEmail(String email, long id, ModelAndView modelAndView) {
@@ -65,6 +69,12 @@ public class UserController {
         return modelAndView;
     }
 
+    @GetMapping
+    public ModelAndView index(ModelAndView modelAndView) {
+        modelAndView.setViewName("userView");
+        return modelAndView;
+    }
+
 
     @GetMapping("/reg")
     public String reg() {
@@ -98,10 +108,11 @@ public class UserController {
     public ModelAndView auth(String email, String password, ModelAndView modelAndView, HttpSession httpSession) {
         User userByEmail = userRepository.findByEmail(email);
         if (userByEmail.getPassword().equals(password)) {
-            httpSession.setAttribute("user", userByEmail);
+            httpSession.setAttribute("user", userByEmail.getFirstName() + " " + userByEmail.getLastName());
             if (userByEmail.getRole() == ADMINISTRATOR) {
                 httpSession.setAttribute("checkAuthAdmin", true);
-            } else if (userByEmail.getRole() == MODERATOR) {
+            }
+            if (userByEmail.getRole() == MODERATOR) {
                 httpSession.setAttribute("checkAuthModerator", true);
             }
             httpSession.setAttribute("checkAuth", true);

@@ -24,13 +24,17 @@ public class AdminController {
     private final UserRepository userRepository;
     private final ToyRepository toyRepository;
     private final OrderRepository orderRepository;
-
+    @GetMapping
+    public ModelAndView index(ModelAndView modelAndView) {
+        modelAndView.setViewName("admin");
+        return modelAndView;
+    }
     @GetMapping("/findByEmail")
     public ModelAndView findUserByEmail(String email, ModelAndView modelAndView) {
         if (userRepository.existsByEmail(email)) {
             User value = userRepository.findByEmail(email);
             modelAndView.addObject("findUserByEmail", value);
-            modelAndView.setViewName("redirect:/admin");
+            modelAndView.setViewName("admin");
             return modelAndView;
         }
         modelAndView.addObject("massage", "User not found by email:" + email);
@@ -42,7 +46,7 @@ public class AdminController {
         if (userRepository.existsById(id)) {
             User value = userRepository.findById(id);
             modelAndView.addObject("findUserById", value);
-            modelAndView.setViewName("redirect:/admin");
+            modelAndView.setViewName("admin");
             return modelAndView;
         }
         modelAndView.addObject("massage", "User not found by ID: !" + id);
@@ -54,7 +58,7 @@ public class AdminController {
         if (userRepository.existsByRole(role)) {
             List<User> value = userRepository.findAllByRole(role);
             modelAndView.addObject("findAllByRole", value);
-            modelAndView.setViewName("redirect:/admin");
+            modelAndView.setViewName("admin");
             return modelAndView;
         }
         modelAndView.addObject("massage", "User not found by role: " + role);
@@ -64,7 +68,7 @@ public class AdminController {
     public ModelAndView delUserById(long id, ModelAndView modelAndView) {
         if (userRepository.existsUserById(id)) {
             userRepository.deleteById(id);
-            modelAndView.setViewName("redirect:/admin");
+            modelAndView.setViewName("admin");
             return modelAndView;
         }
         modelAndView.addObject("massage", "User not found by ID:" + id);

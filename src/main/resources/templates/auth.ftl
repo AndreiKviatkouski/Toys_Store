@@ -27,21 +27,9 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
 
-    <a href="/" class="btn btn-primary " role="button" aria-pressed="true">Homepage</a>
+
 </form>
-
-
-<#--<div>-->
-<#--    <fieldset>-->
-<#--        <legend>Authorisation</legend>-->
-<#--        <form action="/user/auth" method="POST">-->
-<#--            Email : <input type="email" name="email"/> <br/>-->
-<#--            Password : <input type="password" name="password"/> <br/>-->
-<#--            <button type="submit" class="btn btn-primary">Submit</button>-->
-<#--        </form>-->
-<#--    </fieldset>-->
-
-
+<a href="/" class="btn btn-primary " role="button" aria-pressed="true">Homepage</a>
 
 <#--фоновое изображение на весь экран-->
 <style>

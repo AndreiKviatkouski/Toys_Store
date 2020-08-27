@@ -58,30 +58,7 @@
         background-size: cover;
     }
 </style>
-<#--<div>-->
-<#--    <fieldset>-->
-<#--        <legend>Registration</legend>-->
-<#--        <form action="/user/reg" method="POST">-->
-<#--            Firstname: <label>-->
-<#--                <input type="text" name="firstName" maxlength="12" minlength="4" required/>-->
-<#--            </label> <br/>-->
-<#--            Lastname : <label>-->
-<#--                <input type="text" name="lastName"/>-->
-<#--            </label> <br/>-->
-<#--            Password : <label>-->
-<#--                <input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Должно содержать по крайней мере одно число, одну заглавную и строчную буквы, а также не менее 8 и более символов" required/>-->
-<#--            </label> <br/>-->
-<#--            Email : <label>-->
-<#--                <input name="telephone" name="email"/>-->
-<#--            </label> <br/>-->
-<#--            Telephone: <label>-->
-<#--                <input type="tel" name="telephone" pattern="\+375\-[0-9]{2}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}" title="Введите телефон в формате +375-xx-xxx-xx-xx, где вместо x должна быть цифра"required/>-->
-<#--            </label> <br/>-->
-<#--            <input type="submit" value="Create"/>-->
-<#--        </form>-->
-<#--    </fieldset>-->
 
-<#--</div>-->
 </body>
 
 </html>
