@@ -24,11 +24,7 @@ public class ToyController {
 
     private final ToyRepository toyRepository;
 
-    @GetMapping
-    public ModelAndView index(ModelAndView modelAndView) {
-        modelAndView.setViewName("toyView");
-        return modelAndView;
-    }
+
 
     @GetMapping("/addToy")
     public String add(Model model) {

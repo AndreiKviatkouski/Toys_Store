@@ -9,7 +9,7 @@
 <body>
 <style>
     body {
-        background-image: url('https://kartinkinaden.ru/uploads/posts/2020-07/thumbs/1595711163_5-p-fon-lego-6.jpg');
+        background-image: url('https://static.tildacdn.com/tild6132-6330-4161-b763-353431343230/COVID-19__.jpg');
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;

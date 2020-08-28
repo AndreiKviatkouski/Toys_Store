@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Homepage</title>
     <#--    выарвнивание по центру, добавление цвета -->
-    <div style="text-align: center; color: limegreen; background-color:oldlace">
+    <div style="text-align: center; color: limegreen; background-color: #e3f2fd">
         <h1>Hello! It's Children's toys store! </h1>
     </div>
 </head>
@@ -26,10 +26,10 @@
                 <a class="nav-link" href="/user/auth">Auth</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/#">Info</a>
+                <a class="nav-link" href="/info">Info</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/#">Basket</a>
+                <a class="nav-link" href="/basket">Basket</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/order">Order</a>
@@ -56,6 +56,8 @@
         </ul>
     </nav>
 
+
+
 <#--    Toy#1 on the homepage-->
     <div id="toy1" class="card" style="width: 15rem;position: absolute;top:auto;left:30rem;right: auto">
         <img class="card-img-top"
@@ -81,15 +83,50 @@
     </div>
 
 <#--    Toy#3 on the homepage-->
-    <div id="toy2" class="card" style="width: 15rem ;position: absolute;top:auto;left:70rem;right: auto">
+    <div id="toy2" class="card" style="width: 15rem; ;position: absolute;top:auto;left:70rem;right: auto">
         <img class="card-img-top" src="https://gorodcvetov24.ru/upload/iblock/ddd/d8481867_977c_11e6_7f82_568e86852fe4_1e6d4589_8664_11e7_e090_fa163e6d64c5.resize1.jpg" alt="Card image cap">
         <div class="card-body">
-            <h5 class="card-title">Soft toy</h5>
+            <h5 class="card-title">Soft toy bear</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
                 content.</p>
             <a href="/basket" class="btn btn-primary">Add to basket</a>
         </div>
     </div>
+
+<#--    видео с YouTube-->
+    <div class="YouTube">
+        <iframe src="https://www.youtube.com/embed//wCsp-Cd1y6Y?t=38" frameborder="0" allowfullscreen="" width="716"
+                height="342"></iframe>
+    </div>
+
+    <style>
+        .YouTube {
+            width: 616px;
+            max-width: 100%;
+            margin: 0 auto;
+            position: absolute;
+            left: 40rem; bottom: 0;
+        }
+
+        @media (max-width: 646px) {
+            .YouTube {
+                position: relative;
+                padding-bottom: 56.25%;
+                padding-top: 30px;
+                height: 0;
+                overflow: hidden;
+            }
+
+            .YouTube iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    </style>
+
 
 <#--после авторизации user-->
 <#elseif checkAuth??>
@@ -127,37 +164,6 @@
             </li>
         </ul>
     </nav>
-<#--    видео с YouTube-->
-
-    <style>
-        .YouTube {
-            width: 616px;
-            max-width: 100%;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 646px) {
-            .YouTube {
-                position: relative;
-                padding-bottom: 56.25%;
-                padding-top: 30px;
-                height: 0;
-                overflow: hidden;
-            }
-
-            .YouTube iframe {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-            }
-        }
-    </style>
-    <div class="YouTube">
-        <iframe src="https://www.youtube.com/embed//wCsp-Cd1y6Y?t=38" frameborder="0" allowfullscreen="" width="616"
-                height="462"></iframe>
-    </div>
 
 
 

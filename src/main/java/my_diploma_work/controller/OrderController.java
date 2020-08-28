@@ -12,10 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(path = "/order")
 public class OrderController {
     private final OrderRepository orderRepository;
-    @GetMapping
-    public ModelAndView index(ModelAndView modelAndView) {
-        modelAndView.setViewName("order");
-        return modelAndView;
-    }
+
 
 }

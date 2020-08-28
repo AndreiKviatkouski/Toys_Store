@@ -69,12 +69,6 @@ public class UserController {
         return modelAndView;
     }
 
-    @GetMapping
-    public ModelAndView index(ModelAndView modelAndView) {
-        modelAndView.setViewName("userView");
-        return modelAndView;
-    }
-
 
     @GetMapping("/reg")
     public String reg() {

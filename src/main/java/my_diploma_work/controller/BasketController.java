@@ -12,10 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(path = "/basket")
 public class BasketController {
     private final OrderRepository orderRepository;
-    @GetMapping
-    public ModelAndView index(ModelAndView modelAndView) {
-        modelAndView.setViewName("basket");
-        return modelAndView;
-    }
+
 
 }

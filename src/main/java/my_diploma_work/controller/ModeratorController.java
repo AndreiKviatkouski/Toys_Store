@@ -13,10 +13,4 @@ import org.springframework.web.servlet.ModelAndView;
 public class ModeratorController {
     private final ModeratorRepository moderatorRepository;
 
-    @GetMapping
-    public ModelAndView index(ModelAndView modelAndView) {
-        modelAndView.setViewName("moderator");
-        return modelAndView;
-    }
-
 }

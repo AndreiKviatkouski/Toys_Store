@@ -24,11 +24,7 @@ public class AdminController {
     private final UserRepository userRepository;
     private final ToyRepository toyRepository;
     private final OrderRepository orderRepository;
-    @GetMapping
-    public ModelAndView index(ModelAndView modelAndView) {
-        modelAndView.setViewName("admin");
-        return modelAndView;
-    }
+
     @GetMapping("/findByEmail")
     public ModelAndView findUserByEmail(String email, ModelAndView modelAndView) {
         if (userRepository.existsByEmail(email)) {
