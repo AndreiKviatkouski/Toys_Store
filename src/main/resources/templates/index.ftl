@@ -57,7 +57,7 @@
     </nav>
 
 <#--    Toy#1 on the homepage-->
-    <div id="toy1" class="card" style="width: 15rem;">
+    <div id="toy1" class="card" style="width: 15rem;position: absolute;top:auto;left:30rem;right: auto">
         <img class="card-img-top"
              src="https://avatars.mds.yandex.net/get-pdb/1552319/c9e3dd24-9442-4d30-80e9-f0b4dbb6464d/s1200?webp=false"
              alt="Card image cap">
@@ -70,7 +70,7 @@
     </div>
 
 <#--    Toy#2 on the homepage-->
-    <div id="toy2" class="card" style="width: 15rem ;">
+    <div id="toy2" class="card" style="width: 15rem ;position: absolute;top:auto;left:50rem;right: auto">
         <img class="card-img-top" src="https://www.exoforce.ru/image/products/71360.9.big.jpg" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">Constructor Super Mario</h5>
@@ -79,6 +79,18 @@
             <a href="/basket" class="btn btn-primary">Add to basket</a>
         </div>
     </div>
+
+<#--    Toy#3 on the homepage-->
+    <div id="toy2" class="card" style="width: 15rem ;position: absolute;top:auto;left:70rem;right: auto">
+        <img class="card-img-top" src="https://gorodcvetov24.ru/upload/iblock/ddd/d8481867_977c_11e6_7f82_568e86852fe4_1e6d4589_8664_11e7_e090_fa163e6d64c5.resize1.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Soft toy</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="/basket" class="btn btn-primary">Add to basket</a>
+        </div>
+    </div>
+
 <#--после авторизации user-->
 <#elseif checkAuth??>
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
@@ -116,7 +128,7 @@
         </ul>
     </nav>
 <#--    видео с YouTube-->
-    </video>
+
     <style>
         .YouTube {
             width: 616px;
