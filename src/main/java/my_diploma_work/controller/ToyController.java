@@ -128,10 +128,10 @@ public class ToyController {
     }
 
     @GetMapping("/findAll")
-    public String findAll(ModelAndView modelAndView) {
+    public ModelAndView findAll(ModelAndView modelAndView) {
         List<Toy> value = toyRepository.findAll();
         modelAndView.addObject("toy", value);
-        return "toyView";
+        return modelAndView;
     }
 
     @DeleteMapping("/deleteToyById")

@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
-    <h1>Hello! It's Children's toys store! </h1>
+    <#--    выарвнивание по центру, добавление цвета -->
+    <div style="text-align: center; color: limegreen; background-color:oldlace">
+        <h1>Hello! It's Children's toys store! </h1>
+    </div>
 </head>
 <body>
 
@@ -53,6 +56,29 @@
         </ul>
     </nav>
 
+<#--    Toy#1 on the homepage-->
+    <div id="toy1" class="card" style="width: 15rem;">
+        <img class="card-img-top"
+             src="https://avatars.mds.yandex.net/get-pdb/1552319/c9e3dd24-9442-4d30-80e9-f0b4dbb6464d/s1200?webp=false"
+             alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Doll Mascha</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="/basket" class="btn btn-primary">Add to basket</a>
+        </div>
+    </div>
+
+<#--    Toy#2 on the homepage-->
+    <div id="toy2" class="card" style="width: 15rem ;">
+        <img class="card-img-top" src="https://www.exoforce.ru/image/products/71360.9.big.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Constructor Super Mario</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="/basket" class="btn btn-primary">Add to basket</a>
+        </div>
+    </div>
 <#--после авторизации user-->
 <#elseif checkAuth??>
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
@@ -196,7 +222,7 @@
 </div>
 
 <#if message??>
-    <h2>${message}</h2>
+    <h2>${massage}</h2>
 </#if>
 
 
