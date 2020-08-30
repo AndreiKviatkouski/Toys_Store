@@ -4,13 +4,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Basket</title>
+    <title>ItemViewPage</title>
 </head>
 <body>
 <style>
     body {
-
-        background-image: url('https://cdn2.static1-sima-land.com/items/2544591/2/700-nw.jpg');
+        background-image: url('https://kartinkinaden.ru/uploads/posts/2020-07/thumbs/1595711163_5-p-fon-lego-6.jpg');
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;

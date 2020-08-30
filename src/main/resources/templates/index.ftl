@@ -58,74 +58,88 @@
 
 
 
-<#--    Toy#1 on the homepage-->
-    <div id="toy1" class="card" style="width: 15rem;position: absolute;top:auto;left:30rem;right: auto">
-        <img class="card-img-top"
-             src="https://avatars.mds.yandex.net/get-pdb/1552319/c9e3dd24-9442-4d30-80e9-f0b4dbb6464d/s1200?webp=false"
-             alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Doll Mascha</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="/basket" class="btn btn-primary">Add to basket</a>
-        </div>
-    </div>
-
-<#--    Toy#2 on the homepage-->
-    <div id="toy2" class="card" style="width: 15rem ;position: absolute;top:auto;left:50rem;right: auto">
-        <img class="card-img-top" src="https://www.exoforce.ru/image/products/71360.9.big.jpg" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Constructor Super Mario</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="/basket" class="btn btn-primary">Add to basket</a>
-        </div>
-    </div>
-
-<#--    Toy#3 on the homepage-->
-    <div id="toy2" class="card" style="width: 15rem; ;position: absolute;top:auto;left:70rem;right: auto">
-        <img class="card-img-top" src="https://gorodcvetov24.ru/upload/iblock/ddd/d8481867_977c_11e6_7f82_568e86852fe4_1e6d4589_8664_11e7_e090_fa163e6d64c5.resize1.jpg" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Soft toy bear</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="/basket" class="btn btn-primary">Add to basket</a>
-        </div>
-    </div>
-
-<#--    видео с YouTube-->
-    <div class="YouTube">
-        <iframe src="https://www.youtube.com/embed//wCsp-Cd1y6Y?t=38" frameborder="0" allowfullscreen="" width="716"
-                height="342"></iframe>
-    </div>
-
     <style>
-        .YouTube {
-            width: 616px;
-            max-width: 100%;
-            margin: 0 auto;
-            position: absolute;
-            left: 40rem; bottom: 0;
-        }
-
-        @media (max-width: 646px) {
-            .YouTube {
-                position: relative;
-                padding-bottom: 56.25%;
-                padding-top: 30px;
-                height: 0;
-                overflow: hidden;
-            }
-
-            .YouTube iframe {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-            }
+        ul.flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            /*фон блока прозрачный*/
+            background:transparent;
+            /*отступы внутренние*/
+            padding: 3rem 4rem  3rem 4rem;
+            /*отступы наружные*/
+            margin-bottom:5rem;
+            margin-top:5rem;
+            margin-left:15rem;
+            margin-right:15rem;
+            left: 20rem;
+            right: 20rem;
+            list-style: none;
         }
     </style>
+<#--    блок равномерного распределения карточек по экрану-->
+<ul class="flex">
+    <#--show list toy on card-->
+    <#list all>
+        <#items as item>
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top"
+                     src="${item.url}"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">${item.name}</h5>
+                    <p class="card-text">${item.description} Price:${item.price}$</p>
+                </div>
+                <div>
+                    <ul class="list-group list-group-flush">
+                        <a href="/addToBasket?itemId=${item.id}" class="btn btn-primary">Add to basket</a>
+                        <a href="/itemViewPage?id=${item.id}" class="btn btn-success">Show toy</a>
+                    </ul>
+                </div>
+            </div>
+        </#items>
+    <#else>
+        <p>No toys</p>
+    </#list>
+
+</ul>
+
+
+
+<#--   видео с YouTube&ndash;&gt;-->
+<#--    <div class="YouTube">-->
+<#--        <iframe src="https://www.youtube.com/embed//wCsp-Cd1y6Y?t=38" frameborder="0" allowfullscreen="" width="716"-->
+<#--                height="342"></iframe>-->
+<#--    </div>-->
+
+<#--    <style>-->
+<#--        .YouTube {-->
+<#--            width: 616px;-->
+<#--            max-width: 100%;-->
+<#--            margin: 0 auto;-->
+<#--            position: absolute;-->
+<#--            left: 40rem;-->
+<#--            bottom: 0;-->
+<#--        }-->
+
+<#--        @media (max-width: 646px) {-->
+<#--            .YouTube {-->
+<#--                position: relative;-->
+<#--                padding-bottom: 56.25%;-->
+<#--                padding-top: 30px;-->
+<#--                height: 0;-->
+<#--                overflow: hidden;-->
+<#--            }-->
+
+<#--            .YouTube iframe {-->
+<#--                position: absolute;-->
+<#--                top: 0;-->
+<#--                left: 0;-->
+<#--                width: 100%;-->
+<#--                height: 100%;-->
+<#--            }-->
+<#--        }-->
+<#--    </style>-->
 
 
 <#--после авторизации user-->

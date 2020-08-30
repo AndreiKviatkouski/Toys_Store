@@ -13,7 +13,7 @@ public class ExceptionController extends ResponseEntityExceptionHandler {
         public String ex(IllegalArgumentException ex, Model model) {
             String message = ex.getMessage();
             model.addAttribute("message", message);
-            return "index";
+            return "error";
         }
 
         @ExceptionHandler(NullPointerException.class)
@@ -26,7 +26,7 @@ public class ExceptionController extends ResponseEntityExceptionHandler {
         @ExceptionHandler(UserNotFoundException.class)
         public String ex(UserNotFoundException ex, Model model) {
             String message = ex.getMessage();
-            model.addAttribute("error", message);
-            return "index";
+            model.addAttribute("massage", message);
+            return "error";
         }
 }

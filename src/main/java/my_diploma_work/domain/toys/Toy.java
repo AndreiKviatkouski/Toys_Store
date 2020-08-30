@@ -2,16 +2,14 @@ package my_diploma_work.domain.toys;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
+@Data//Аннотация, которая добавляет в ваш проект Getters/Setters, Equals, ToString, HashCode
 @Entity
-@Data
-@AllArgsConstructor
+@AllArgsConstructor//Конструктор, содержащий все глобальные переменные, записанные в данном классе
+
 
 public class Toy {
 
@@ -29,22 +27,24 @@ public class Toy {
     private String manufacturer;
     private BigDecimal price;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
+    @OneToMany
     private List<Review> review;
 
     private String description;
 
-    public Toy() {
-    }
+    private String url;
 
-    public Toy(long id,String name, Format format, StatusToy statusToy, String manufacturer, BigDecimal price, String description) {
+    public Toy(String name, Format format, StatusToy statusToy, String manufacturer, BigDecimal price, String description, String url) {
         this.name = name;
         this.format = format;
         this.statusToy = statusToy;
         this.manufacturer = manufacturer;
         this.price = price;
         this.description = description;
+        this.url = url;
+    }
+
+    public Toy() {
     }
 }
 

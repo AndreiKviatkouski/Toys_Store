@@ -6,47 +6,31 @@ import my_diploma_work.domain.toys.Format;
 import my_diploma_work.domain.toys.StatusToy;
 import my_diploma_work.domain.toys.Toy;
 import my_diploma_work.repository.ToyRepository;
-import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import static my_diploma_work.domain.toys.Format.*;
-import static my_diploma_work.domain.toys.StatusToy.IN_STOCK;
-import static my_diploma_work.domain.toys.StatusToy.SOLD;
 
 @Data
-@RestController
-@RequestMapping(path = "/toy")// переходит по /toy на следующую  modelAndView.setViewName("имя View"), например toyView.ftl;
+@Controller
+@RequestMapping(path = "/toy")
+// переходит по /toy на следующую  modelAndView.setViewName("имя View"), например toyView.ftl;
 public class ToyController {
 
     private final ToyRepository toyRepository;
 
 
-
-    @GetMapping("/addToy")
-    public String add(Model model) {
-        Toy toy1 = new Toy(1, "Sponge Bob", SOFT_TOYS, IN_STOCK, "USA", BigDecimal.valueOf(10), "Popular USA toy");
-        Toy toy2 = new Toy(2, "Mascha", DOLLS, IN_STOCK, "RUSSIA", BigDecimal.valueOf(20), "Popular RUSSIA toy");
-        Toy toy3 = new Toy(3, "Lego Mario", CONSTRUCTOR, SOLD, "DENMARK", BigDecimal.valueOf(30), "Popular DENMARK toy");
-        toyRepository.save(toy1);
-        toyRepository.save(toy2);
-        toyRepository.save(toy3);
-        model.addAttribute("toy", new Toy());
-        return "toyView";
-    }
-
     @PostMapping("/addToy")
     public ModelAndView add(Toy toy, ModelAndView modelAndView) {
         if (!toyRepository.existsByName(toy.getName())) {
             toyRepository.save(toy);
-            modelAndView.setViewName("redirect:/toyView");
         } else {
             modelAndView.addObject("massage", "Toy already exist");
-            modelAndView.setViewName("toyView");
         }
+        modelAndView.setViewName("toyView");
         return modelAndView;
     }
 
@@ -54,10 +38,9 @@ public class ToyController {
     public String findById(long id, ModelAndView modelAndView) {
         if (toyRepository.existsToyById(id)) {
             toyRepository.findById(id);
-            modelAndView.setViewName("redirect:/toyView");
         } else {
             modelAndView.addObject("massage", "Toy by id already exist. ID:" + id);
-            modelAndView.setViewName("/toyView");
+            modelAndView.setViewName("toyView");
         }
         return "redirect:/toyView";
     }
@@ -125,8 +108,9 @@ public class ToyController {
 
     @GetMapping("/findAll")
     public ModelAndView findAll(ModelAndView modelAndView) {
-        List<Toy> value = toyRepository.findAll();
-        modelAndView.addObject("toy", value);
+        List<Toy> all = toyRepository.findAll();
+        modelAndView.addObject("toyAll", all);
+        modelAndView.setViewName("findAllToy");
         return modelAndView;
     }
 

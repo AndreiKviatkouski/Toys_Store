@@ -9,12 +9,13 @@ import javax.persistence.*;
 @Data
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
+
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String firstName;
     private String lastName;
     private String password;
@@ -24,7 +25,12 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private Role role = Role.USER;
 
-    public User(Role role) {
+    public User(String firstName, String lastName, String password, String email, String telephone, Role role) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.telephone = telephone;
         this.role = role;
     }
 
@@ -34,5 +40,8 @@ public class User {
         this.password = password;
         this.email = email;
         this.telephone = telephone;
+    }
+
+    public User() {
     }
 }

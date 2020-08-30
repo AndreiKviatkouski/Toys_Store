@@ -8,6 +8,7 @@ import my_diploma_work.repository.AdminRepository;
 import my_diploma_work.repository.OrderRepository;
 import my_diploma_work.repository.ToyRepository;
 import my_diploma_work.repository.UserRepository;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Data
-@RestController
+@Controller
 @RequestMapping(path = "/admin")
 public class AdminController {
     private final AdminRepository adminRepository;
