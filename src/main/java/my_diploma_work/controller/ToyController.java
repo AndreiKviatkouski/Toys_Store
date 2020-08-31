@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
-
 
 @Data
 @Controller
@@ -21,28 +21,45 @@ import java.util.List;
 public class ToyController {
 
     private final ToyRepository toyRepository;
+    private Toy toy;
+    private Format format;
+    private StatusToy statusToy;
+    private ModelAndView modelAndView;
 
+
+    @GetMapping("/addToy")
+    public String reg() {
+        return "addToy";
+    }
 
     @PostMapping("/addToy")
-    public ModelAndView add(Toy toy, ModelAndView modelAndView) {
+    public String add(Toy toy,Format format, StatusToy statusToy, ModelAndView modelAndView) {
+        if (toyRepository.findAll().isEmpty()) {
+           return "error";
+        }
         if (!toyRepository.existsByName(toy.getName())) {
             toyRepository.save(toy);
+//            modelAndView.addObject("format", format);
+//            modelAndView.addObject("status", statusToy);
+//            modelAndView.setViewName("addToy");
         } else {
             modelAndView.addObject("massage", "Toy already exist");
+            return "error";
         }
-        modelAndView.setViewName("toyView");
-        return modelAndView;
+
+        return "toyView";
     }
 
     @GetMapping("/findById")
-    public String findById(long id, ModelAndView modelAndView) {
+    public ModelAndView findById(long id, ModelAndView modelAndView) {
         if (toyRepository.existsToyById(id)) {
             toyRepository.findById(id);
+
         } else {
             modelAndView.addObject("massage", "Toy by id already exist. ID:" + id);
             modelAndView.setViewName("toyView");
         }
-        return "redirect:/toyView";
+        return modelAndView;
     }
 
     @GetMapping("/findByManufacturer")

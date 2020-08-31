@@ -39,9 +39,9 @@ public class HomepageController {
         toyRepository.save(toy2);
         toyRepository.save(toy3);
 
-        User admin = new User("Admin", "Adminski", "Admin1234", "admin@mail.ru", "+375-29-111-11-11",ADMINISTRATOR);
-        User user = new User("User", "Userski", "User1234", "user@mail.ru", "+375-29-111-11-12");
-        User moderator = new User("Moderator", "Userski", "Moderator1234", "moderator@mail.ru", "+375-29-111-11-13",MODERATOR);
+        User admin = new User(1,"Admin", "Adminski", "Admin1234", "admin@mail.ru", "+375-29-111-11-11",ADMINISTRATOR);
+        User user = new User(2,"User", "Userski", "User1234", "user@mail.ru", "+375-29-111-11-12");
+        User moderator = new User(3,"Moderator", "Userski", "Moderator1234", "moderator@mail.ru", "+375-29-111-11-13",MODERATOR);
         userRepository.save(admin);
         userRepository.save(user);
         userRepository.save(moderator);
@@ -49,6 +49,18 @@ public class HomepageController {
         modelAndView.addObject("user",new User());// create  users when start homepage
         modelAndView.addObject("toy",new Toy());// create  toys when start homepage
         modelAndView.addObject("all", all);// creat list toys when start homepage
+        return modelAndView;
+    }
+    @GetMapping(path = "itemViewPage")
+    public ModelAndView itemViewPage(ModelAndView modelAndView) {
+//        modelAndView.getModel();
+        modelAndView.setViewName("itemViewPage");
+        return modelAndView;
+    }
+
+    @GetMapping(path = "addToBasket")
+    public ModelAndView basketAdd(ModelAndView modelAndView) {
+        modelAndView.setViewName("basket");
         return modelAndView;
     }
 

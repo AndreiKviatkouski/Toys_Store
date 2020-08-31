@@ -8,7 +8,7 @@
 <body>
 
 <div class="btn-group" role="group" aria-label="Basic example">
-    <a href="/toy/addToy" class="btn btn-info">Add</a>
+    <a href="/toy/addToy" class="btn btn-info"> Add Toy </a>
     <a href="/toy/findAll" class="btn btn-success">findAll</a>
     <a href="/toy/findById" class="btn btn-success">findById</a>
     <a href="/toy/findByManufacturer" class="btn btn-success">findByManufacturer</a>

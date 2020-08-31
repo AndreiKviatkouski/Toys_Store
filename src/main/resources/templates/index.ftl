@@ -68,7 +68,7 @@
             /*отступы внутренние*/
             padding: 3rem 4rem  3rem 4rem;
             /*отступы наружные*/
-            margin-bottom:5rem;
+            margin-bottom:2rem;
             margin-top:5rem;
             margin-left:15rem;
             margin-right:15rem;
@@ -179,6 +179,51 @@
         </ul>
     </nav>
 
+    <style>
+        ul.flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            /*фон блока прозрачный*/
+            background:transparent;
+            /*отступы внутренние*/
+            padding: 3rem 4rem  3rem 4rem;
+            /*отступы наружные*/
+            margin-bottom:5rem;
+            margin-top:2rem;
+            margin-left:15rem;
+            margin-right:15rem;
+            left: 20rem;
+            right: 20rem;
+            list-style: none;
+        }
+    </style>
+<#--    блок равномерного распределения карточек по экрану-->
+    <ul class="flex">
+        <#--show list toy on card-->
+        <#list all>
+            <#items as item>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top"
+                         src="${item.url}"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.name}</h5>
+                        <p class="card-text">${item.description} Price:${item.price}$</p>
+                    </div>
+                    <div>
+                        <ul class="list-group list-group-flush">
+                            <a href="/addToBasket?itemId=${item.id}" class="btn btn-primary">Add to basket</a>
+                            <a href="/itemViewPage?id=${item.id}" class="btn btn-success">Show toy</a>
+                        </ul>
+                    </div>
+                </div>
+            </#items>
+        <#else>
+            <p>No toys</p>
+        </#list>
+
+    </ul>
 
 
 
