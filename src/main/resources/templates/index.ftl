@@ -57,7 +57,7 @@
     </nav>
 
 
-
+<#--    блок равномерного распределения карточек по экрану-->
     <style>
         ul.flex {
             display: flex;
@@ -77,12 +77,12 @@
             list-style: none;
         }
     </style>
-<#--    блок равномерного распределения карточек по экрану-->
+
 <ul class="flex">
     <#--show list toy on card-->
     <#list all>
         <#items as item>
-            <div class="card" style="width: 18rem;">
+            <div class="card m-3" style="width: 18rem;">
                 <img class="card-img-top"
                      src="${item.url}"
                      alt="Card image cap">
@@ -92,7 +92,7 @@
                 </div>
                 <div>
                     <ul class="list-group list-group-flush">
-                        <a href="/addToBasket?itemId=${item.id}" class="btn btn-primary">Add to basket</a>
+                        <a href="/addToBasket?itemId=${item.id}" class="btn btn-primary mb-2">Add to basket</a>
                         <a href="/itemViewPage?id=${item.id}" class="btn btn-success">Show toy</a>
                     </ul>
                 </div>

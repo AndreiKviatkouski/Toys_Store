@@ -11,12 +11,15 @@ import my_diploma_work.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
-import static my_diploma_work.domain.user.Role.*;
+import static my_diploma_work.domain.user.Role.ADMINISTRATOR;
+import static my_diploma_work.domain.user.Role.MODERATOR;
 
 
 @Data
@@ -39,21 +42,28 @@ public class HomepageController {
         toyRepository.save(toy2);
         toyRepository.save(toy3);
 
-        User admin = new User(1,"Admin", "Adminski", "Admin1234", "admin@mail.ru", "+375-29-111-11-11",ADMINISTRATOR);
-        User user = new User(2,"User", "Userski", "User1234", "user@mail.ru", "+375-29-111-11-12");
-        User moderator = new User(3,"Moderator", "Userski", "Moderator1234", "moderator@mail.ru", "+375-29-111-11-13",MODERATOR);
+        User admin = new User(1, "Admin", "Adminski", "Admin1234", "admin@mail.ru", "+375-29-111-11-11", ADMINISTRATOR);
+        User user = new User(2, "User", "Userski", "User1234", "user@mail.ru", "+375-29-111-11-12");
+        User moderator = new User(3, "Moderator", "Userski", "Moderator1234", "moderator@mail.ru", "+375-29-111-11-13", MODERATOR);
         userRepository.save(admin);
         userRepository.save(user);
         userRepository.save(moderator);
 
-        modelAndView.addObject("user",new User());// create  users when start homepage
-        modelAndView.addObject("toy",new Toy());// create  toys when start homepage
+        modelAndView.addObject("user", new User());// create  users when start homepage
+        modelAndView.addObject("toy", new Toy());// create  toys when start homepage
         modelAndView.addObject("all", all);// creat list toys when start homepage
         return modelAndView;
     }
+
     @GetMapping(path = "itemViewPage")
-    public ModelAndView itemViewPage(ModelAndView modelAndView) {
-//        modelAndView.getModel();
+    public ModelAndView itemViewPage(@RequestParam("id") long id,ModelAndView modelAndView) {
+        Optional<Toy> byId = toyRepository.findById(id);
+        if (byId.isPresent()) {
+            Toy toy = byId.get();
+            modelAndView.addObject("toy", toy);
+        } else {
+            modelAndView.setViewName("error");
+        }
         modelAndView.setViewName("itemViewPage");
         return modelAndView;
     }

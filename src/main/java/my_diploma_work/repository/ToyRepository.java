@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ToyRepository extends JpaRepository<Toy, Long> {
 
-    Toy findById(long id);
+//    Toy findById(long id);
 
     List<Toy> findAllByManufacturer(String manufacturer);
 

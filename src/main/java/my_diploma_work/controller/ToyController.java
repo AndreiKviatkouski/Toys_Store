@@ -33,15 +33,12 @@ public class ToyController {
     }
 
     @PostMapping("/addToy")
-    public String add(Toy toy,Format format, StatusToy statusToy, ModelAndView modelAndView) {
-        if (toyRepository.findAll().isEmpty()) {
-           return "error";
-        }
+    public String add(Toy toy, Format format, StatusToy statusToy, ModelAndView modelAndView) {
         if (!toyRepository.existsByName(toy.getName())) {
             toyRepository.save(toy);
-//            modelAndView.addObject("format", format);
-//            modelAndView.addObject("status", statusToy);
-//            modelAndView.setViewName("addToy");
+            modelAndView.addObject("format", format);
+            modelAndView.addObject("status", statusToy);
+            modelAndView.setViewName("addToy");
         } else {
             modelAndView.addObject("massage", "Toy already exist");
             return "error";

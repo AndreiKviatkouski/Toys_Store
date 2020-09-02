@@ -16,7 +16,7 @@
 
     <div class="form-group" style="padding-right:30rem; margin-left:30rem; margin-top: 1rem" >
         <label for="exampleInputEmail1">Name</label>
-        <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  maxlength="20" minlength="2" required ><br/>
+        <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  maxlength="20" minlength="2" required ><br/>
         <small id="emailHelp" class="form-text text-muted">for example:Mario constructor</small>
     </div>
 
@@ -32,9 +32,9 @@
 
     <div class="form-group" style="padding-right:30rem; margin-left:30rem; margin-top: 1rem" >
         <label>
-            <select name="status">
+            <select name="statusToy">
                 <option value="SOLD">SOLD</option>
-                <option value="{IN_STOCK}">IN_STOCK</option>
+                <option value="IN_STOCK">IN_STOCK</option>
             </select>
         </label>
     </div>
@@ -42,25 +42,25 @@
 
     <div class="form-group" style="padding-right:30rem; margin-left:30rem; margin-top: 1rem" >
         <label for="">Manufacturer</label>
-        <input type="text" name="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  maxlength="20" minlength="2" required ><br/>
+        <input type="text" name="manufacturer" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  maxlength="20" minlength="2" required ><br/>
         <small id="emailHelp" class="form-text text-muted">for example:Lego</small>
     </div>
 
     <div class="form-group" style="padding-right:30rem; margin-left:30rem; margin-top: 1rem" >
         <label for="">Price</label>
-        <input type="number" name="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  maxlength="3" minlength="2" required ><br/>
+        <input type="number" name="price" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  maxlength="3" minlength="2" required ><br/>
         <small id="emailHelp" class="form-text text-muted">for example: 10 </small>
     </div>
 
     <div class="form-group" style="padding-right:30rem; margin-left:30rem; margin-top: 1rem" >
         <label for="">Description</label>
-        <input type="text" name="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  maxlength="40" minlength="2" required ><br/>
+        <input type="text" name="description" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  maxlength="40" minlength="2" required ><br/>
         <small id="emailHelp" class="form-text text-muted">for example:Popular toy in Belarus</small>
     </div>
 
     <div class="form-group" style="padding-right:30rem; margin-left:30rem; margin-top: 1rem" >
         <label for="">URL</label>
-        <input type="url" name="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  required ><br/>
+        <input type="url" name="url" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  required ><br/>
         <small id="emailHelp" class="form-text text-muted">https://www.belrynok.by/wp-content/uploads/2019/11/ggl_belrynok.by_3110_grishkashop.by_.jpg</small>
     </div>
 
