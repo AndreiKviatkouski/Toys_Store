@@ -31,22 +31,22 @@
     }
 </style>
 
-<div class="card" style="width: 35rem;">
+<div class="card" style="width: 30rem;">
     <img class="card-img-top" src="${toy.url}" alt="Card image cap">
     <div class="card-body">
         <h5 class="card-title">Toy name:${toy.name}</h5>
         <p class="card-text">Toy description: ${toy.description}</p>
     </div>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">Toy price: ${toy.price}</li>
+        <li class="list-group-item">Toy price: ${toy.price} $</li>
         <li class="list-group-item">Toy manufacturer: ${toy.manufacturer}</li>
         <li class="list-group-item">Toy format: ${toy.format}</li>
-        <li class="list-group-item">Toy status ${toy.statusToy}</li>
+        <li class="list-group-item">Toy status: ${toy.statusToy}</li>
         <li class="list-group-item">Toy estimation:
             <#if toy.estimation??>
                 ${toy.estimation}
             <#else>
-                don't have estimation
+               toy don't have estimation
             </#if>
 
         </li>
